@@ -1,0 +1,103 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id "io.spring.dependency-management" version "1.1.7"
+    id 'base'
+}
+
+group = 'com'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility JavaVersion.VERSION_21
+    targetCompatibility JavaVersion.VERSION_21
+}
+
+repositories {
+    maven { url 'https://repo.e-iceblue.com/nexus/content/groups/public/' }
+    mavenLocal()
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.13'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.23.1'
+    implementation 'org.testng:testng:7.9.0'
+    implementation 'com.arakelian:faker:4.0.1'
+    implementation("com.codeborne:selenide:7.10.1")
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
+    implementation 'io.qameta.allure:allure-testng:2.13.5'
+    implementation 'io.qameta.allure:allure-rest-assured:2.13.5'
+    implementation 'io.qameta.allure:allure-selenide:2.13.5'
+    implementation 'ru.yandex.qatools.ashot:ashot:1.5.3'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
+    implementation 'io.rest-assured:rest-assured:5.3.0'
+    implementation 'org.jsoup:jsoup:1.17.2'
+    implementation 'de.taimos:totp:1.0'
+    runtimeOnly 'org.aspectj:aspectjrt:1.6.7'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+    implementation("org.apache.commons:commons-text:1.14.0")
+    implementation("commons-io:commons-io:2.20.0")
+    implementation 'com.neovisionaries:nv-i18n:1.29'
+}
+
+
+tasks.register('sanityTest', Test) {
+    useTestNG() {
+        def threadCount = System.getProperty("threadCount", "1")
+        suiteXmlBuilder().suite(name: 'automated-tests', parallel: 'classes', 'thread-count': threadCount) {
+            listeners << 'listeners.TestMethodListenerClass'
+            test(name: 'smoke test') {
+                groups {
+                    includeGroups("sanitynmh")
+                }
+                packages {
+                    'package'(name: 'com.testframework.*')
+                }
+            }
+        }
+    }
+    setupSystemProperty(it)
+}
+
+
+test {
+    useTestNG()
+    setupSystemProperty(it)
+}
+
+void setupSystemProperty(Test test) {
+    setupSystemProperty(test, new ArrayList<String>())
+}
+
+void setupSystemProperty(Test test, List<String> excludedProperty) {
+    Map<String, ?> propertiesForTests = new HashMap<>()
+
+    List<String> propertyNames = Arrays.asList("server", "suite", "env", "browser")
+    propertyNames.forEach { property ->
+        if (!excludedProperty.contains(property)) {
+            if (project.hasProperty(property)) {
+                propertiesForTests.put(property, project.property(property))
+            }
+        }
+    }
+
+    if (propertiesForTests.size() > 0)
+        test.systemProperties(propertiesForTests)
+}

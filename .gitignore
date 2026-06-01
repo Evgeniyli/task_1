@@ -1,0 +1,56 @@
+HELP.md
+.gradle
+build/
+build-cache/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+http-logs/
+.log
+failed_suites/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+allure-results/
+allure-report/
+screenshots/
+*.log
+*.log.*
+
+### Temp data ###
+*.xls
+*.pdf
+.DS_Store
+
+### JMeter ###
+jmeter_install_dir/
+apache-jmeter-*.tgz
+performance/jmeter-result

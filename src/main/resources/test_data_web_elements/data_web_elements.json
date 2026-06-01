@@ -1,0 +1,48 @@
+{
+  "welcome_page": {
+    "title": "//h1[@data-testid='title']",
+    "welcome_tittle": "//h2[@data-testid='auth-title']",
+    "create_account_button": "//button[@data-testid='btn-register']",
+    "sub_title": "//p[@data-testid='subtitle']",
+    "login_button": "//button[@data-testid='btn-login']",
+    "auth-subtitle": "//p[@data-testid='auth-subtitle']",
+    "already_have_an_account_link": "//button[@data-testid='btn-switch-mode']",
+    "auth-error": "//div[@data-testid='auth-error']",
+    "btn_theme_format": "//button[@data-testid='btn-theme' or .//button[text()='%s']]",
+    "btn_theme": "//button[@data-testid='btn-theme']",
+    "input-name": "//input[@data-testid='input-name']"
+  },
+  "play_tab_page": {
+    "your-turn": "//p[@data-testid='your-turn']",
+    "select-difficulty": "//p[@data-testid='select-difficulty']",
+    "subtitle": "//p[@data-testid='subtitle']",
+    "btn-new": "//button[@data-testid='btn-new']",
+    "btn-hint": "//button[@data-testid='btn-hint']",
+    "btn-reset": "//button[@data-testid='btn-reset']",
+    "rowCell": "//button[@data-testid='%s']",
+    "status": "//div[@data-testid='status']",
+    "select-difficulty": "//select[@data-testid='select-difficulty']"
+  },
+  "profile_tab_page": {
+    "profile-title": "//h2[@data-testid='profile-title']",
+    "profile-form": "//form[@data-testid='profile-form']",
+    "btn-save-profile": "//button[@data-testid='btn-save-profile']",
+    "btn-delete-account": "//button[@data-testid='btn-delete-account']",
+    "input-profile-name": "//input[@data-testid='input-profile-name']",
+    "profile-stats": "//dl[@data-testid='profile-stats']",
+    "profile-message": "//div[@data-testid='profile-message']"
+  },
+  "history_tab_page": {
+    "btn-clear-history": "//h2[@data-testid='btn-clear-history']",
+    "history-empty": "//p[@data-testid='history-empty']"
+  },
+  "main_page": {
+    "nav-profile": "//button[@data-testid='nav-profile']",
+    "nav-history": "//button[@data-testid='nav-history']",
+    "nav-play": "//button[@data-testid='nav-play']",
+    "history-title": "//h2[@data-testid='history-title']",
+    "btn-logout": "//button[@data-testid='btn-logout']",
+    "hello-user_tittle": "//div[@data-testid='hello-user']",
+    "select_language": "//select[@data-testid='select-language']"
+  }
+}
