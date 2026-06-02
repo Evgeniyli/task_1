@@ -65,7 +65,7 @@ tasks.register('sanityTest', Test) {
             listeners << 'listeners.TestMethodListenerClass'
             test(name: 'smoke test') {
                 groups {
-                    includeGroups("sanitynmh")
+                    includeGroups("test_ui")
                 }
                 packages {
                     'package'(name: 'com.testframework.*')
