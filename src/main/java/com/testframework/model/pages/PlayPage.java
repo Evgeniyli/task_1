@@ -32,11 +32,8 @@ public class PlayPage extends BasePage<PlayPage> {
                                  List<String> list3) {
 
         var firstResult = playGame(list);
-        System.out.println(firstResult);
         var secondResult = playGame(list2);
-        System.out.println(secondResult);
         var thirdResult = playGame(list3);
-        System.out.println(thirdResult);
         return firstResult || secondResult || thirdResult;
     }
 
