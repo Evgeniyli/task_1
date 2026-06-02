@@ -14,7 +14,6 @@
   },
   "play_tab_page": {
     "your-turn": "//p[@data-testid='your-turn']",
-    "select-difficulty": "//p[@data-testid='select-difficulty']",
     "subtitle": "//p[@data-testid='subtitle']",
     "btn-new": "//button[@data-testid='btn-new']",
     "btn-hint": "//button[@data-testid='btn-hint']",
