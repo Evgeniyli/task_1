@@ -28,19 +28,11 @@ public class PlayGameTest extends BaseTest {
     List<String> winnerList2;
     List<String> winnerList3;
 
-    List<String> computerList;
-    List<String> computerList2;
-    List<String> computerList3;
-
-
     @BeforeClass(alwaysRun = true)
     public void setUp() {
         winnerList = Arrays.asList("cell-0", "cell-1", "cell-2");
         winnerList2 = Arrays.asList("cell-3", "cell-4", "cell-5");
         winnerList3 = Arrays.asList("cell-6", "cell-7", "cell-8");
-        computerList = Arrays.asList("cell-0", "cell-2", "cell-4");
-        computerList2 = Arrays.asList("cell-6", "cell-3", "cell-6");
-        computerList3 = Arrays.asList("cell-1", "cell-5", "cell-8");
     }
 
     @Test(groups = "test_ui")
