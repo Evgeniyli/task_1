@@ -20,7 +20,7 @@ public class ProfileTabPage extends BasePage<ProfileTabPage> {
     private final SelenideElement inputDisplayName = $(Selectors.byXpath(getValue(PAGE_NAME, "input-profile-name")));
     private final SelenideElement saveChanges = $(Selectors.byXpath(getValue(PAGE_NAME, "btn-save-profile")));
     private final SelenideElement deleteAccount = $(Selectors.byXpath(getValue(PAGE_NAME, "btn-delete-account")));
-    private final SelenideElement profileNessage = $(Selectors.byXpath(getValue(PAGE_NAME, "profile-message")));
+    private final SelenideElement profileMessage = $(Selectors.byXpath(getValue(PAGE_NAME, "profile-message")));
 
     protected ProfileTabPage() {
         super(HEADER);
@@ -44,7 +44,7 @@ public class ProfileTabPage extends BasePage<ProfileTabPage> {
     }
 
     public boolean isSaveMessageAppeared() {
-        boolean isSaveMessage = WaitingUtils.isSelenideElement(Condition.visible, profileNessage, Duration.ofSeconds(4));
+        boolean isSaveMessage = WaitingUtils.isSelenideElement(Condition.visible, profileMessage, Duration.ofSeconds(4));
         TestReporter.reportDebugStep("%s Save changes message is displayed", isSaveMessage);
         return isSaveMessage;
     }

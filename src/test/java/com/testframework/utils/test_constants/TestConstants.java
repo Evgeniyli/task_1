@@ -8,4 +8,7 @@ public interface TestConstants {
     String MEDIUM = "medium";
     String EASY = "easy";
     String HARD = "hard";
+    String YOU_WIN = "You win!";
+    String EASY1 = "Easy";
+    String WIN = "Win";
 }

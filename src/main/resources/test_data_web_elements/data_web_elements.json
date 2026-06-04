@@ -33,7 +33,10 @@
   },
   "history_tab_page": {
     "btn-clear-history": "//h2[@data-testid='btn-clear-history']",
-    "history-empty": "//p[@data-testid='history-empty']"
+    "history-empty": "//p[@data-testid='history-empty']",
+    "history-date": "//td[@data-testid='history-date-0']",
+    "history-difficulty": "//td[@data-testid='history-difficulty-0']",
+    "history-result": "//td[@data-testid='history-result-0']"
   },
   "main_page": {
     "nav-profile": "//button[@data-testid='nav-profile']",

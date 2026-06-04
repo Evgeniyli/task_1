@@ -29,15 +29,40 @@ public class PlayPage extends BasePage<PlayPage> {
 
     public boolean getGameResult(List<String> list,
                                  List<String> list2,
-                                 List<String> list3) {
+                                 List<String> list3, String initiateStatus) {
 
-        var firstResult = playGame(list);
-        var secondResult = playGame(list2);
-        var thirdResult = playGame(list3);
+        var firstResult = playGame(list, initiateStatus);
+        var secondResult = playGame(list2, initiateStatus);
+        var thirdResult = playGame(list3, initiateStatus);
         return firstResult || secondResult || thirdResult;
     }
 
-    public boolean playGame(List<String> list) {
+    public boolean getGameResultWithoutStatus(List<String> list,
+                                              List<String> list2,
+                                              List<String> list3) {
+
+        var firstResult = playGameWithoutStatus(list);
+        var secondResult = playGameWithoutStatus(list2);
+        var thirdResult = playGameWithoutStatus(list3);
+        return firstResult || secondResult || thirdResult;
+    }
+
+    public boolean playGame(List<String> list, String initiateStatus) {
+        for (String item : list) {
+            var rowCellElementFormat = $(Selectors.byXpath(String.format(rowCell, item)));
+            if (rowCellElementFormat.getAttribute("disabled") == null) {
+                rowCellElementFormat.click();
+                WaitingUtils.delay(3, TimeUnit.SECONDS);
+            }
+            String status = getStatus();
+            if (status.equalsIgnoreCase(initiateStatus)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean playGameWithoutStatus(List<String> list) {
         for (String item : list) {
             var rowCellElementFormat = $(Selectors.byXpath(String.format(rowCell, item)));
             if (rowCellElementFormat.getAttribute("disabled") == null) {
@@ -53,6 +78,7 @@ public class PlayPage extends BasePage<PlayPage> {
         }
         return false;
     }
+
 
     public String getStatus() {
         String statusText = status.getText();
